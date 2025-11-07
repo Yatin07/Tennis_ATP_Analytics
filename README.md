@@ -14,33 +14,35 @@ A comprehensive data analysis and machine learning project that evaluates and fo
 ```
 Tennis_Project/
 │
-├── XG Boost Model/               # XGBoost model and training scripts
-│   ├── feature_importance.png   # Visualization of feature importance
-│   ├── model_metadata.json      # Model configuration and metadata
-│   ├── tennis_model_full.json   # Pre-trained XGBoost model
-│   ├── train_full_model.py      # Script to train the full model
-│   ├── train_tennis_model.py    # Main training script
-│   ├── train_tennis_model_debug.py  # Debug version of training script
-│   └── training_timing.json     # Training performance metrics
+├── XG Boost Model/                  # XGBoost model and training scripts
+│   ├── feature_importance.png      # Visualization of feature importance
+│   ├── model_metadata.json         # Model configuration and metadata
+│   ├── tennis_model_debug.xgb      # Debug model (XGBoost binary format)
+│   ├── tennis_model_full.json      # Pre-trained XGBoost model (JSON format for Power BI)
+│   ├── tennis_model_full.xgb       # Pre-trained XGBoost model (XGBoost binary format)
+│   ├── train_full_model.py         # Script to train the full model
+│   ├── train_tennis_model.py       # Main training script
+│   ├── train_tennis_model_debug.py # Debug version of training script
+│   └── training_timing.json        # Training performance metrics
 │
-├── csv/                              # Source data in CSV format
-│   ├── atp_rankings_current.csv     # Current ATP rankings
-│   ├── flags_iso (1).csv           # Country flag data for visualization
-│   ├── matches_master.csv          # Historical match data
-│   ├── players_detail.csv          # Player information and metadata
-│   └── rankings_master.zip         # Historical ranking data (compressed)
+├── csv/                           # Source data in CSV format
+│   ├── atp_rankings_current.csv   # Current ATP rankings
+│   ├── flags_iso (1).csv          # Country flag data for visualization
+│   ├── matches_master.csv         # Historical match data
+│   ├── players_detail.csv         # Player information and metadata
+│   └── rankings_master.zip        # Historical ranking data (compressed)
 │
-├── elo files/                   # ELO rating calculation scripts and data
-│   ├── atp_current_with_elo.csv # Pre-calculated ELO ratings
-│   ├── calculate_elo_fast.py    # Optimized ELO calculation
-│   └── calculate_elo_ratings.py # Standard ELO calculation
+├── elo files/                     # ELO rating calculation scripts and data
+│   ├── atp_current_with_elo.csv   # Pre-calculated ELO ratings
+│   ├── calculate_elo_fast.py      # Optimized ELO calculation
+│   └── calculate_elo_ratings.py   # Standard ELO calculation
 │
-├── parquet/                     # Data in Parquet format
-│   ├── matches_master.parquet   # Match data (Parquet format)
-│   └── rankings_master.parquet  # Ranking data (Parquet format)
+├── parquet/                       # Data in Parquet format
+│   ├── matches_master.parquet     # Match data (Parquet format)
+│   └── rankings_master.parquet    # Ranking data (Parquet format)
 │
-├── Tennis_ATP_Analytics.pbix    # Power BI dashboard file
-└── README.md                    # Project documentation
+├── Tennis_ATP_Analytics.pbix      # Power BI dashboard file
+└── README.md                      # Project documentation
 ```
 
 ## 📋 Table of Contents
@@ -338,11 +340,18 @@ The Fact_PlayerMatches table was created in Power BI using a DAX UNION of the Fa
    
    *Key Steps Performed:*
    - *Imported Libraries:* Utilizes pandas, xgboost, and matplotlib for data manipulation, model loading, and visualization.
-   - *Model Loading:*
-     python
+   - *Model Loading in Power BI:*
+     ```python
+     # Note: The model is loaded in JSON format for compatibility with Power BI
      model = xgb.Booster()
-     model.load_model(model_path)
+     model.load_model(model_path)  # model_path should point to tennis_model_full.json
      
+     # Important: Ensure the model is loaded only once for better performance
+     if 'model' not in globals():
+         global model
+         model = xgb.Booster()
+         model.load_model(model_path)
+     ```
    - *Data Preparation:*
      - Cleaned and encoded match-level data, including ranking, age, height, and surface type.
      - Used slicer-selected players (playerA and playerB) to fetch their recent statistics.
@@ -466,11 +475,15 @@ The XGBoost model used in this project was created to predict tennis match outco
 - *Feature Importance:*
   - Assessed and visualized feature importance to understand model decisions.
 
-### Model Saving
-- *Format:*
-   - Saved the trained model in JSON format as tennis_model_full.json.
-- *Metadata:*
-   - Saved metadata including feature names and encoding details in model_metadata.json (located in XG Boost Model/).
+### Model Saving and Power BI Integration
+- *Model Format:*
+   - The trained model is saved in JSON format as `tennis_model_full.json` (located in `XG Boost Model/` directory).
+   - This format was chosen because Power BI's Python visualizations require models to be in a format that can be loaded using XGBoost's native JSON serialization.
+   - The model cannot be used directly in `.xgb` binary format within Power BI, hence the JSON format is used for compatibility.
+
+- *Model Metadata:*
+   - `model_metadata.json` contains feature names and encoding details (located in `XG Boost Model/`).
+   - This metadata is essential for correctly preparing input data before making predictions in the Power BI environment.
 
 ### Feature Importance Plot
 - *Visualization:*
