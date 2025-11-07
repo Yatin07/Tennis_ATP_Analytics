@@ -23,12 +23,12 @@ Tennis_Project/
 │   ├── train_tennis_model_debug.py  # Debug version of training script
 │   └── training_timing.json     # Training performance metrics
 │
-├── csv/                         # Source data in CSV format
-│   ├── atp_rankings_current.csv  # Current ATP rankings
-│   ├── flags_iso (1).csv        # Country flag data for visualization
-│   ├── matches_master.csv       # Historical match data
-│   ├── players_detail.csv       # Player information and metadata
-│   └── rankings_master.csv      # Historical ranking data
+├── csv/                              # Source data in CSV format
+│   ├── atp_rankings_current.csv     # Current ATP rankings
+│   ├── flags_iso (1).csv           # Country flag data for visualization
+│   ├── matches_master.csv          # Historical match data
+│   ├── players_detail.csv          # Player information and metadata
+│   └── rankings_master.zip         # Historical ranking data (compressed)
 │
 ├── elo files/                   # ELO rating calculation scripts and data
 │   ├── atp_current_with_elo.csv # Pre-calculated ELO ratings
@@ -87,10 +87,11 @@ Tennis_Project/
    cd Tennis_ATP_Analytics
    
 
-2. *Download Pre-Processed Data and Model*
-   - The repository already includes all necessary pre-processed files:
+2. *Download and Prepare Data*
+   - The repository includes all necessary pre-processed files:
      - `csv/matches_master.csv`: Combined historical match data
-     - `csv/rankings_master.csv`: Historical ranking data
+     - `csv/rankings_master.zip`: Historical ranking data (extract this file before use)
+     - Note: Extract `rankings_master.zip` to get `rankings_master.csv` in the same directory
      - `csv/players_detail.csv`: Player information
      - `csv/atp_rankings_current.csv`: Latest ATP rankings
      - `elo files/atp_current_with_elo.csv`: Pre-calculated Elo ratings
@@ -104,6 +105,7 @@ Tennis_Project/
    - Download and install [Power BI Desktop](https://powerbi.microsoft.com/en-us/desktop/)
    - Install [Python 3.8 or later](https://www.python.org/downloads/)
      - During installation, check "Add Python to PATH"
+   - Extract `rankings_master.zip` in the `csv/` directory before running any scripts or opening the Power BI file
 
 2. *Install Required Python Packages*
    Open Command Prompt and run:
