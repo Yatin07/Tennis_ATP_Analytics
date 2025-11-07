@@ -1,0 +1,37 @@
+[
+  {
+    "step": "Starting data loading",
+    "step_time": 0.0030508041381835938,
+    "total_time": 0.0030508041381835938
+  },
+  {
+    "step": "Processed 142,248 matches after cleaning",
+    "step_time": 1.5268030166625977,
+    "total_time": 1.5298538208007812
+  },
+  {
+    "step": "Creating features",
+    "step_time": 0.0,
+    "total_time": 1.5298538208007812
+  },
+  {
+    "step": "Splitting data",
+    "step_time": 0.18094348907470703,
+    "total_time": 1.7107973098754883
+  },
+  {
+    "step": "Training final model",
+    "step_time": 8.072396516799927,
+    "total_time": 9.783193826675415
+  },
+  {
+    "step": "Evaluating model",
+    "step_time": 0.7186615467071533,
+    "total_time": 10.501855373382568
+  },
+  {
+    "step": "Saving model and metadata",
+    "step_time": 0.11615991592407227,
+    "total_time": 10.61801528930664
+  }
+]

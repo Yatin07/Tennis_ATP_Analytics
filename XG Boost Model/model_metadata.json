@@ -1,0 +1,44 @@
+{
+  "feature_names": [
+    "rank_diff",
+    "age_diff",
+    "ht_diff",
+    "surface_encoded",
+    "year"
+  ],
+  "surface_encoder": [
+    "Carpet",
+    "Clay",
+    "Grass",
+    "Hard"
+  ],
+  "metrics": {
+    "accuracy": 0.6620210896309314,
+    "roc_auc": 0.7103079826366104,
+    "confusion_matrix": [
+      [
+        18790,
+        9737
+      ],
+      [
+        9494,
+        18879
+      ]
+    ],
+    "feature_importance": {
+      "rank_diff": 138.0,
+      "age_diff": 74.0,
+      "ht_diff": 86.0,
+      "year": 81.0,
+      "surface_encoded": 26.0
+    }
+  },
+  "timestamp": "2025-10-28T00:33:02.125314",
+  "model_info": "Trained to match Power BI visualization requirements",
+  "feature_descriptions": {
+    "rank_diff": "winner_rank - loser_rank",
+    "age_diff": "winner_age - loser_age",
+    "ht_diff": "winner_ht - loser_ht",
+    "surface_encoded": "Encoded surface type (0=Hard, 1=Clay, 2=Grass, etc.)"
+  }
+}
