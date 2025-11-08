@@ -120,6 +120,8 @@ Tennis_Project/
    - Go to File > Options and settings > Options > Python scripting
    - Set the Python home directory to your Python installation path (e.g., C:\Users\YourUsername\AppData\Local\Programs\Python\Python38)
    - Restart Power BI after configuration
+  
+<img width="1009" height="782" alt="Screenshot 2025-11-06 200709" src="https://github.com/user-attachments/assets/3d702af3-229d-4374-83f4-688c60529278" />
 
 4. *Update Data Source Paths*
    - After opening Tennis_ATP_Analytics.pbix, you'll see a warning about data source errors
