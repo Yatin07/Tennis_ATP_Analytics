@@ -122,10 +122,10 @@ Tennis_Project/
    - Restart Power BI after configuration
   
 4. *Update Data Source Paths*
+   - After opening Tennis_ATP_Analytics.pbix, you'll see a warning about data source errors
 
 <img width="1009" height="782" alt="Screenshot 2025-11-06 200709" src="https://github.com/user-attachments/assets/3d702af3-229d-4374-83f4-688c60529278" />
-
-   - After opening Tennis_ATP_Analytics.pbix, you'll see a warning about data source errors
+     
    - Click "Transform data" > "Data source settings"
    - For each data source (CSV file):
      1. Select the file
@@ -134,7 +134,7 @@ Tennis_Project/
      4. Click "OK"
    - Click "Close & Apply" to save changes
 
-6. *Configure Python Visual*
+5. *Configure Python Visual*
    - In the dashboard, locate the prediction visual (usually shows match predictions)
    - Click on the visual to select it
    - In the Python script editor (bottom panel), locate the model loading code:
@@ -146,7 +146,7 @@ Tennis_Project/
    - Update the model_path to point to the tennis_model.json file in your local repository
    - Click the play button (▶) to apply changes
 
-7. *Refresh Dashboard*
+6. *Refresh Dashboard*
    - Click "Refresh" in the Home tab to update all visuals
    - The dashboard should now load with your local data and model
 
